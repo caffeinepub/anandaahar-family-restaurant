@@ -95,7 +95,7 @@ export default function LocationPage() {
                       </span>
                     </div>
                     <span className="text-sm text-muted-foreground font-medium">
-                      Open – 4:30 PM
+                      11:00 AM – 4:30 PM
                     </span>
                   </div>
                   <div className="flex items-center justify-between px-4 py-3">
@@ -148,20 +148,37 @@ export default function LocationPage() {
             </div>
 
             {/* Directions button */}
-            <Button
-              asChild
-              className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-semibold"
-              data-ocid="location.primary_button"
-            >
-              <a
-                href="https://www.google.com/maps/search/?api=1&query=Lalgiri+Cross,+Kalyan+Nagar,+Kalaburagi,+Karnataka+585103"
-                target="_blank"
-                rel="noopener noreferrer"
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Button
+                asChild
+                className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90 font-semibold"
+                data-ocid="location.primary_button"
               >
-                <Navigation className="w-4 h-4 mr-2" />
-                Get Directions
-              </a>
-            </Button>
+                <a
+                  href="https://maps.app.goo.gl/DJWAy23h86enZafq9"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Navigation className="w-4 h-4 mr-2" />
+                  Get Directions
+                </a>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                className="flex-1 border-primary text-primary hover:bg-primary/10 font-semibold"
+                data-ocid="location.secondary_button"
+              >
+                <a
+                  href="https://maps.app.goo.gl/DJWAy23h86enZafq9"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MapPin className="w-4 h-4 mr-2" />
+                  View on Google Maps
+                </a>
+              </Button>
+            </div>
           </motion.div>
 
           {/* Map column */}
@@ -176,7 +193,7 @@ export default function LocationPage() {
               data-ocid="location.map_marker"
             >
               <iframe
-                src="https://maps.google.com/maps?q=Lalgiri+Cross,+Kalyan+Nagar,+Kalaburagi,+Karnataka+585103&output=embed"
+                src="https://maps.google.com/maps?q=17.3297,76.8224&z=17&output=embed"
                 width="100%"
                 height="440"
                 style={{ border: 0 }}

@@ -4,6 +4,24 @@ import { Link } from "@tanstack/react-router";
 import { ChevronRight, Leaf, Star, Users } from "lucide-react";
 import { motion } from "motion/react";
 
+const galleryPhotos = [
+  {
+    src: "/assets/uploads/unnamed-1--1.jpg",
+    alt: "Crispy bhajji with dipping sauce",
+    caption: "Crispy Bhajji",
+  },
+  {
+    src: "/assets/uploads/unnamed-2--2.jpg",
+    alt: "Mixed starter platter with chutney",
+    caption: "Mixed Starters Platter",
+  },
+  {
+    src: "/assets/uploads/unnamed-3.jpg",
+    alt: "Golden finger chips",
+    caption: "Finger Chips",
+  },
+];
+
 const highlights = [
   {
     icon: <Leaf className="w-7 h-7" />,
@@ -42,6 +60,8 @@ export default function HomePage() {
             src="/assets/generated/hero-banner.dim_1200x500.jpg"
             alt="Anandaahar Restaurant - delicious vegetarian food"
             className="w-full h-full object-cover"
+            fetchPriority="high"
+            decoding="async"
           />
           {/* Gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-r from-foreground/80 via-foreground/50 to-transparent" />
@@ -144,6 +164,58 @@ export default function HomePage() {
                     </p>
                   </CardContent>
                 </Card>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Photo Gallery */}
+      <section className="py-16 bg-muted/30">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-10"
+          >
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-3">
+              A Glimpse of Anandaahar
+            </h2>
+            <div className="w-16 h-1 bg-primary rounded-full mx-auto mb-4" />
+            <p className="text-muted-foreground text-base">
+              From our kitchen to your table — pure vegetarian happiness
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+          >
+            {galleryPhotos.map((photo, i) => (
+              <motion.div
+                key={photo.alt}
+                variants={itemVariants}
+                className="group relative overflow-hidden rounded-2xl border border-border shadow-sm aspect-[4/3]"
+                data-ocid={`gallery.item.${i + 1}`}
+              >
+                <img
+                  src={photo.src}
+                  alt={photo.alt}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                  <p className="text-white text-sm font-semibold">
+                    {photo.caption}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </motion.div>

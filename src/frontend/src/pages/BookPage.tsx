@@ -119,7 +119,7 @@ export default function BookPage() {
           </div>
           <p className="text-muted-foreground text-sm mb-6">
             We look forward to welcoming you! For any changes, please call us at
-            +91 98765 43210.
+            +91 89044 87231.
           </p>
           <Button
             onClick={() => {

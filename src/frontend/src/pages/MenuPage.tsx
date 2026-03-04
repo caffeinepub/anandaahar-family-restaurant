@@ -5,7 +5,6 @@ import { useCart } from "@/context/CartContext";
 import { useGetMenuItems } from "@/hooks/useQueries";
 import { Link } from "@tanstack/react-router";
 import { Plus, ShoppingCart } from "lucide-react";
-import { motion } from "motion/react";
 import { useState } from "react";
 import type { MenuItem } from "../backend.d";
 
@@ -431,10 +430,7 @@ function MenuItemCard({
   const inCart = cartItem ? cartItem.quantity : 0;
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.35, delay: index * 0.04 }}
+    <div
       data-ocid={`menu.item.${index + 1}`}
       className="bg-card border border-border rounded-xl p-4 flex flex-col gap-2 hover:shadow-md transition-shadow duration-200"
     >
@@ -477,7 +473,7 @@ function MenuItemCard({
           Add
         </Button>
       </div>
-    </motion.div>
+    </div>
   );
 }
 

@@ -17,7 +17,16 @@ export default defineConfig({
   build: {
     emptyOutDir: true,
     sourcemap: false,
-    minify: false,
+    minify: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ["react", "react-dom"],
+          router: ["@tanstack/react-router", "@tanstack/react-query"],
+          motion: ["motion/react"],
+        },
+      },
+    },
   },
   css: {
     postcss: "./postcss.config.js",

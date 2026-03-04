@@ -86,8 +86,8 @@ export default function OrderPage() {
             Order ID: #{orderId.toString()}
           </p>
           <p className="text-muted-foreground text-sm mb-6">
-            We'll prepare your delicious meal shortly. Thank you for choosing
-            Anandaahar!
+            We'll prepare your delicious meal shortly. For any queries, call us
+            at +91 89044 87231. Thank you for choosing Anandaahar!
           </p>
           <Button
             asChild

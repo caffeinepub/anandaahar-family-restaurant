@@ -2,11 +2,6 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { Toaster } from "@/components/ui/sonner";
 import { CartProvider } from "@/context/CartContext";
-import BookPage from "@/pages/BookPage";
-import HomePage from "@/pages/HomePage";
-import LocationPage from "@/pages/LocationPage";
-import MenuPage from "@/pages/MenuPage";
-import OrderPage from "@/pages/OrderPage";
 import {
   Outlet,
   RouterProvider,
@@ -14,6 +9,14 @@ import {
   createRoute,
   createRouter,
 } from "@tanstack/react-router";
+import { Suspense, lazy } from "react";
+
+const AdminPage = lazy(() => import("@/pages/AdminPage"));
+const BookPage = lazy(() => import("@/pages/BookPage"));
+const HomePage = lazy(() => import("@/pages/HomePage"));
+const LocationPage = lazy(() => import("@/pages/LocationPage"));
+const MenuPage = lazy(() => import("@/pages/MenuPage"));
+const OrderPage = lazy(() => import("@/pages/OrderPage"));
 
 // Root layout
 const rootRoute = createRootRoute({
@@ -22,7 +25,9 @@ const rootRoute = createRootRoute({
       <div className="min-h-screen flex flex-col">
         <Navbar />
         <div className="flex-1">
-          <Outlet />
+          <Suspense fallback={<div className="min-h-[60vh]" />}>
+            <Outlet />
+          </Suspense>
         </div>
         <Footer />
       </div>
@@ -62,12 +67,19 @@ const locationRoute = createRoute({
   component: LocationPage,
 });
 
+const adminRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/admin",
+  component: AdminPage,
+});
+
 const routeTree = rootRoute.addChildren([
   homeRoute,
   menuRoute,
   orderRoute,
   bookRoute,
   locationRoute,
+  adminRoute,
 ]);
 
 const router = createRouter({ routeTree });

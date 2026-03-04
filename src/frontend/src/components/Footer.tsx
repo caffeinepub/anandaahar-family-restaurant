@@ -99,6 +99,15 @@ export default function Footer() {
             </a>
           </span>
         </div>
+        <div className="mt-3 text-center">
+          <Link
+            to="/admin"
+            data-ocid="footer.admin_link"
+            className="text-xs text-background/30 hover:text-background/60 transition-colors"
+          >
+            Admin
+          </Link>
+        </div>
       </div>
     </footer>
   );
